@@ -1,1 +1,1 @@
-# Kubernetes + CRI-O @ TuringPi + CM4 
+# Kubernetes + CRI-O  ᯓ🏃🏻‍♀️‍➡️TuringPi + CM4 
