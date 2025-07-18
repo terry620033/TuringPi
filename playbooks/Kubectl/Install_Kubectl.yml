@@ -1,0 +1,15 @@
+---
+- name: Run existing Install_Kubectl.sh script on remote host
+  hosts: masters
+  become: yes
+  tasks:
+#    - name: Ensure Install_Kubectl.sh has executable permissions
+#      file:
+#        path: /home/ubuntu/3_Kubectl/Install_Kubectl.sh
+#        mode: '0755'
+
+    - name: Execute Install_Kubectl.sh on remote host
+      shell: "sh /home/ubuntu/3_Kubectl/Install_Kubectl.sh"
+      args:
+        executable: /bin/bash
+

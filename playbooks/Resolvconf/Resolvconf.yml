@@ -1,0 +1,16 @@
+---
+- name: Run existing InstallResolvconf.sh script on remote host
+  hosts: masters
+  become: yes
+  tasks:
+    - name: Ensure InstallResolvconf.sh has executable permissions
+      file:
+        path: /home/ubuntu/0_HAProxy/InstallResolvconf.sh
+        mode: '0755'
+
+    - name: Execute InstallResolvconf.sh on remote host
+      shell: "/home/ubuntu/0_HAProxy/InstallResolvconf.sh"
+      args:
+        executable: /bin/bash
+
+

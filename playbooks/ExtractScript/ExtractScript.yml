@@ -1,0 +1,17 @@
+---
+- name: Untar files on corresponding remote nodes
+  hosts: masters
+  become: yes
+  tasks:
+    - name: Ensure destination directory exists
+      ansible.builtin.file:
+        path: /home/ubuntu
+        state: directory
+        mode: '0755'
+
+    - name: Untar the tar file specific to the host
+      ansible.builtin.unarchive:
+        src: "/home/ubuntu/{{ inventory_hostname }}.tar"
+        dest: /home/ubuntu
+        remote_src: yes
+

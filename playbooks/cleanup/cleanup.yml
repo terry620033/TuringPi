@@ -1,0 +1,45 @@
+---
+- name: Purge keepalived and haproxy and remove configuration files
+  hosts: masters
+  become: true
+  tasks:
+    - name: Purge keepalived and haproxy packages
+      apt:
+        name: "{{ item }}"
+        state: absent
+        purge: yes
+      loop:
+        - keepalived
+        - haproxy
+
+    - name: Remove Keepalived configuration directory if exists
+      file:
+        path: /etc/keepalived
+        state: absent
+      register: keepalived_remove_result
+      ignore_errors: true
+
+    - name: Remove HAProxy configuration directory if exists
+      file:
+        path: /etc/haproxy
+        state: absent
+      register: haproxy_remove_result
+      ignore_errors: true
+
+    - name: Log removal results
+      copy:
+        content: |
+          Keepalived removal result: {{ keepalived_remove_result }}
+          HAProxy removal result: {{ haproxy_remove_result }}
+        dest: /var/log/package_removal.log
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Display log file for confirmation
+      command: cat /var/log/package_removal.log
+      register: log_output
+
+    - debug:
+        msg: "Log output:\n{{ log_output.stdout }}"
+

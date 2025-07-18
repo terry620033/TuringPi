@@ -1,0 +1,44 @@
+---
+- name: Configure Netplan on Ubuntu
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install netplan if not present
+      apt:
+        name: netplan.io
+        state: present
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Ensure the netplan configuration directory exists
+      file:
+        path: /etc/netplan
+        state: directory
+
+    - name: Create netplan configuration file
+      copy:
+        dest: /etc/netplan/50-cloud-init.yaml
+        content: |
+          network:
+            version: 2
+            ethernets:
+              eth0:  # Change this to your interface name
+                dhcp4: no
+                addresses:
+                  - "{{ ansible_host_ip }}/24"  # Use the IP defined in the inventory
+                gateway4: 10.1.8.28  # Change to your gateway
+                nameservers:
+                  addresses:
+                    - 10.1.8.28  # Change to your desired DNS
+                    - 8.8.8.8  # Change to your desired DNS
+                    - 8.8.4.4
+            # Optional: Uncomment below to enable DHCP
+            # dhcp4: yes
+
+    - name: Apply netplan configuration
+      command: netplan apply
+
+    - name: Reboot to apply changes
+      reboot:
+        msg: "Rebooting to apply netplan configuration."
+        reboot_timeout: 300
+

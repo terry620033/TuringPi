@@ -1,0 +1,27 @@
+---
+# Mapping of what hardware MAC addresses should be configured with specific IPs.
+mac_address_mapping:
+  # Balancer over TRENDnet GigE adapter.
+  #"b8:27:eb:ae:24:8b":
+  #  name: bal1.urashiman.org
+  #  ip: "10.1.8.10"
+
+  # TuringPi Node #1 ~ Node #4.
+  "E4:5F:01:D1:24:31":
+    name: tpi-mn1.urashiman.org
+    ip: "10.1.8.61"
+  "E4:5F:01:D0:E3:94":
+    name: tpi-mn2.urashiman.org
+    ip: "10.1.8.62"
+  "E4:5F:01:D1:22:CB":
+    name: tpi-mn3.urashiman.org
+    ip: "10.1.8.63"
+  "E4:5F:01:D1:22:83":
+    name: tpi-mn4.urashiman.org
+    ip: "10.1.8.64"
+
+# Nameservers to use in resolv.conf.
+dns_nameservers:
+  - "10.1.8.60"
+  - "8.8.8.8"
+  - "8.8.4.4"

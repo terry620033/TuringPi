@@ -1,0 +1,9 @@
+- hosts: masters haproxy
+  become: yes
+  tasks:
+    - name: Reboot the servers
+      command: sudo shutdown -r now
+      async: 1
+      poll: 0
+      ignore_errors: true
+

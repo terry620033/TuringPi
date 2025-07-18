@@ -1,0 +1,30 @@
+[balancer]
+192.168.2.60
+
+[web]
+192.168.2.61
+192.168.2.62
+
+[database]
+192.168.2.63 mysql_server_id=1 mysql_replication_role=master
+192.168.2.64 mysql_server_id=2 mysql_replication_role=slave
+
+[dramble:children]
+balancer
+web
+database
+
+[dramble:vars]
+sible_ssh_user=pi
+deploy_target=pi
+
+# 
+# [pis]
+# 192.168.2.60
+# 192.168.2.61
+# 192.168.2.62
+# 192.168.2.63
+# 192.168.2.64
+# 
+# [pis:vars]
+# ansible_ssh_user=pi

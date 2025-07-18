@@ -1,0 +1,15 @@
+---
+- name: Execute shell script on remote server to purge Keepalived & HAProxy
+  hosts: masters
+  become: true
+  tasks:
+    - name: Ensure purgeHA.sh has executable permissions
+      file:
+        path: /home/ubuntu/00_HAProxy/purgeHA.sh
+        mode: '0755'
+
+    - name: Run shell script on remote server to purge Keepalived & HAProxy
+      shell: "sh /home/ubuntu/00_HAProxy/purgeHA.sh"
+      args:
+        executable: /bin/sh
+

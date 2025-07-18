@@ -1,0 +1,27 @@
+[tpivip]
+10.1.8.60
+
+[masters]
+tpi-mn1 ansible_host=10.1.8.61 ip=10.1.8.61
+tpi-mn2 ansible_host=10.1.8.62 ip=10.1.8.62
+tpi-mn3 ansible_host=10.1.8.63 ip=10.1.8.63
+tpi-mn4 ansible_host=10.1.8.64 ip=10.1.8.64
+
+[haproxy]
+haproxy1 ansible_host=10.1.8.71 
+haproxy2 ansible_host=10.1.8.72
+haproxy3 ansible_host=10.1.8.73
+haproxy4 ansible_host=10.1.8.74
+
+[workers]
+
+[turingpi:children]
+tpivip
+haproxy
+masters
+workers
+
+[turingpi:vars]
+ansible_ssh_user=ubuntu
+deploy_target=ubuntu
+

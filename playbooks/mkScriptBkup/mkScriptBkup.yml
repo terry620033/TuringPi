@@ -1,0 +1,11 @@
+---
+- name: Execute shell script on remote server
+  hosts: masters
+
+  tasks:
+    - name: Run mkScriptBkup.sh shell script on remote server
+      shell: sh /home/ubuntu/mkScriptBkup.sh
+      async: 1
+      poll: 0
+      ignore_errors: true
+

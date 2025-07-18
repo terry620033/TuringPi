@@ -1,0 +1,18 @@
+---
+- name: Execute shell script on remote server to purge Resolvconf
+  hosts: masters
+  become: true
+  tasks:
+    - name: Ensure purgeResolv.sh has executable permissions
+      file:
+        path: /home/ubuntu/0_HAProxy/purgeResolvconf.sh
+        mode: '0755'
+
+    - name: Run shell script on remote server to purge Resolvconf
+      shell: "/home/ubuntu/0_HAProxy/purgeResolvconf.sh"
+      async: 1
+      poll: 0
+      ignore_errors: true
+      args:
+        executable: /bin/bash
+

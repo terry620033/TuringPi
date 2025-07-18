@@ -1,0 +1,812 @@
+terry6200@cm4:~/Kubernetes/Deployment/Ansible/TuringPi $ ansible-playbook -i inventory playbooks/InstallHA/InstallHA.yml
+
+PLAY [Install Keepalived and HAProxy] *************************************************************************************************
+
+TASK [Gathering Facts] ****************************************************************************************************************
+ok: [tpi-mn2]
+ok: [tpi-mn1]
+ok: [tpi-mn4]
+ok: [tpi-mn3]
+
+TASK [Update and upgrade packages] ****************************************************************************************************
+ok: [tpi-mn4]
+ok: [tpi-mn1]
+ok: [tpi-mn2]
+ok: [tpi-mn3]
+
+TASK [Install Keepalived] *************************************************************************************************************
+changed: [tpi-mn2]
+changed: [tpi-mn4]
+changed: [tpi-mn3]
+changed: [tpi-mn1]
+
+TASK [Copy check_apiserver.sh to /etc/keepalived/] ************************************************************************************
+ok: [tpi-mn1]
+ok: [tpi-mn3]
+ok: [tpi-mn4]
+ok: [tpi-mn2]
+
+TASK [Copy keepalived.cfg to /etc/keepalived/] ****************************************************************************************
+ok: [tpi-mn1]
+ok: [tpi-mn2]
+ok: [tpi-mn3]
+ok: [tpi-mn4]
+
+TASK [Create keepalived_script group] *************************************************************************************************
+ok: [tpi-mn2]
+ok: [tpi-mn3]
+ok: [tpi-mn4]
+ok: [tpi-mn1]
+
+TASK [Create keepalived_script user] **************************************************************************************************
+ok: [tpi-mn1]
+ok: [tpi-mn3]
+ok: [tpi-mn2]
+ok: [tpi-mn4]
+
+TASK [Enable and start Keepalived service] ********************************************************************************************
+ok: [tpi-mn3]
+ok: [tpi-mn2]
+ok: [tpi-mn4]
+ok: [tpi-mn1]
+
+TASK [Install HAProxy] ****************************************************************************************************************
+changed: [tpi-mn1]
+changed: [tpi-mn4]
+changed: [tpi-mn2]
+changed: [tpi-mn3]
+
+TASK [Backup original HAProxy configuration] ******************************************************************************************
+changed: [tpi-mn1]
+changed: [tpi-mn2]
+changed: [tpi-mn3]
+changed: [tpi-mn4]
+
+TASK [Append haproxy.cfg to HAProxy configuration] ************************************************************************************
+An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+fatal: [tpi-mn1]: FAILED! => {"changed": false, "msg": "Could not find or access 'haproxy.cfg'\nSearched in:\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/files/haproxy.cfg\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/haproxy.cfg\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/files/haproxy.cfg\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/haproxy.cfg on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+fatal: [tpi-mn2]: FAILED! => {"changed": false, "msg": "Could not find or access 'haproxy.cfg'\nSearched in:\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/files/haproxy.cfg\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/haproxy.cfg\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/files/haproxy.cfg\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/haproxy.cfg on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+fatal: [tpi-mn3]: FAILED! => {"changed": false, "msg": "Could not find or access 'haproxy.cfg'\nSearched in:\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/files/haproxy.cfg\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/haproxy.cfg\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/files/haproxy.cfg\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/haproxy.cfg on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+fatal: [tpi-mn4]: FAILED! => {"changed": false, "msg": "Could not find or access 'haproxy.cfg'\nSearched in:\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/files/haproxy.cfg\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/haproxy.cfg\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/files/haproxy.cfg\n\t/home/terry6200/Kubernetes/Deployment/Ansible/TuringPi/playbooks/InstallHA/haproxy.cfg on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+
+PLAY RECAP ****************************************************************************************************************************
+tpi-mn1                    : ok=10   changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+tpi-mn2                    : ok=10   changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+tpi-mn3                    : ok=10   changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+tpi-mn4                    : ok=10   changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+
+terry6200@cm4:~/Kubernetes/Deployment/Ansible/TuringPi $ ansible-playbook -i inventory playbooks/umask/umask.yml
+
+PLAY [Unmask, enable, and start keepalived and HAProxy services] **********************************************************************
+
+TASK [Gathering Facts] ****************************************************************************************************************
+ok: [haproxy2]
+ok: [haproxy3]
+ok: [haproxy4]
+ok: [haproxy1]
+ok: [10.1.8.60]
+ok: [tpi-mn2]
+ok: [tpi-mn3]
+ok: [tpi-mn1]
+ok: [tpi-mn4]
+
+TASK [Unmask the keepalived service] **************************************************************************************************
+changed: [haproxy4]
+changed: [haproxy3]
+changed: [haproxy2]
+changed: [10.1.8.60]
+changed: [haproxy1]
+changed: [tpi-mn2]
+changed: [tpi-mn3]
+changed: [tpi-mn4]
+changed: [tpi-mn1]
+
+TASK [Enable keepalived service to start at boot] *************************************************************************************
+changed: [haproxy3]
+changed: [haproxy2]
+changed: [haproxy4]
+changed: [10.1.8.60]
+changed: [tpi-mn3]
+changed: [tpi-mn2]
+changed: [haproxy1]
+changed: [tpi-mn1]
+changed: [tpi-mn4]
+
+TASK [Start keepalived service] *******************************************************************************************************
+changed: [haproxy2]
+changed: [haproxy3]
+changed: [haproxy4]
+changed: [10.1.8.60]
+changed: [haproxy1]
+changed: [tpi-mn2]
+changed: [tpi-mn3]
+changed: [tpi-mn4]
+changed: [tpi-mn1]
+
+TASK [Check status of keepalived service] *********************************************************************************************
+changed: [haproxy2]
+changed: [haproxy3]
+changed: [haproxy4]
+changed: [10.1.8.60]
+changed: [haproxy1]
+changed: [tpi-mn2]
+changed: [tpi-mn3]
+changed: [tpi-mn4]
+changed: [tpi-mn1]
+
+TASK [Print keepalived status] ********************************************************************************************************
+ok: [10.1.8.60] => {
+    "keepalived_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "keepalived"
+        ],
+        "delta": "0:00:00.051516",
+        "end": "2024-10-19 12:42:13.866978",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:13.815462",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● keepalived.service - Keepalive Daemon (LVS and VRRP)\n     Loaded: loaded (/lib/systemd/system/keepalived.service; enabled; vendor preset: enabled)\n     Active: active (running) since Sat 2024-10-19 12:40:16 EDT; 1min 56s ago\n   Main PID: 3584 (keepalived)\n      Tasks: 2 (limit: 9244)\n     Memory: 3.8M\n        CPU: 995ms\n     CGroup: /system.slice/keepalived.service\n             ├─3584 /usr/sbin/keepalived --dont-fork\n             └─3585 /usr/sbin/keepalived --dont-fork\n\nOct 19 12:40:16 tpi-mn1 systemd[1]: Started Keepalive Daemon (LVS and VRRP).\nOct 19 12:40:16 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) succeeded\nOct 19 12:40:16 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 200 to 250\nOct 19 12:40:19 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Entering MASTER STATE\nOct 19 12:41:54 tpi-mn1 Keepalived_vrrp[3585]: Track script chk_haproxy is already running, expect idle - skipping run\nOct 19 12:42:02 tpi-mn1 Keepalived_vrrp[3585]: Track script chk_haproxy is already running, expect idle - skipping run\nOct 19 12:42:04 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) timed_out\nOct 19 12:42:04 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 250 to 200\nOct 19 12:42:10 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) succeeded\nOct 19 12:42:10 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 200 to 250",
+        "stdout_lines": [
+            "● keepalived.service - Keepalive Daemon (LVS and VRRP)",
+            "     Loaded: loaded (/lib/systemd/system/keepalived.service; enabled; vendor preset: enabled)",
+            "     Active: active (running) since Sat 2024-10-19 12:40:16 EDT; 1min 56s ago",
+            "   Main PID: 3584 (keepalived)",
+            "      Tasks: 2 (limit: 9244)",
+            "     Memory: 3.8M",
+            "        CPU: 995ms",
+            "     CGroup: /system.slice/keepalived.service",
+            "             ├─3584 /usr/sbin/keepalived --dont-fork",
+            "             └─3585 /usr/sbin/keepalived --dont-fork",
+            "",
+            "Oct 19 12:40:16 tpi-mn1 systemd[1]: Started Keepalive Daemon (LVS and VRRP).",
+            "Oct 19 12:40:16 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) succeeded",
+            "Oct 19 12:40:16 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 200 to 250",
+            "Oct 19 12:40:19 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Entering MASTER STATE",
+            "Oct 19 12:41:54 tpi-mn1 Keepalived_vrrp[3585]: Track script chk_haproxy is already running, expect idle - skipping run",
+            "Oct 19 12:42:02 tpi-mn1 Keepalived_vrrp[3585]: Track script chk_haproxy is already running, expect idle - skipping run",
+            "Oct 19 12:42:04 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) timed_out",
+            "Oct 19 12:42:04 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 250 to 200",
+            "Oct 19 12:42:10 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) succeeded",
+            "Oct 19 12:42:10 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 200 to 250"
+        ]
+    }
+}
+ok: [haproxy1] => {
+    "keepalived_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "keepalived"
+        ],
+        "delta": "0:00:00.061999",
+        "end": "2024-10-19 12:42:13.958294",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:13.896295",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● keepalived.service - Keepalive Daemon (LVS and VRRP)\n     Loaded: loaded (/lib/systemd/system/keepalived.service; enabled; vendor preset: enabled)\n     Active: active (running) since Sat 2024-10-19 12:40:16 EDT; 1min 56s ago\n   Main PID: 3584 (keepalived)\n      Tasks: 2 (limit: 9244)\n     Memory: 3.8M\n        CPU: 995ms\n     CGroup: /system.slice/keepalived.service\n             ├─3584 /usr/sbin/keepalived --dont-fork\n             └─3585 /usr/sbin/keepalived --dont-fork\n\nOct 19 12:40:16 tpi-mn1 systemd[1]: Started Keepalive Daemon (LVS and VRRP).\nOct 19 12:40:16 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) succeeded\nOct 19 12:40:16 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 200 to 250\nOct 19 12:40:19 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Entering MASTER STATE\nOct 19 12:41:54 tpi-mn1 Keepalived_vrrp[3585]: Track script chk_haproxy is already running, expect idle - skipping run\nOct 19 12:42:02 tpi-mn1 Keepalived_vrrp[3585]: Track script chk_haproxy is already running, expect idle - skipping run\nOct 19 12:42:04 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) timed_out\nOct 19 12:42:04 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 250 to 200\nOct 19 12:42:10 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) succeeded\nOct 19 12:42:10 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 200 to 250",
+        "stdout_lines": [
+            "● keepalived.service - Keepalive Daemon (LVS and VRRP)",
+            "     Loaded: loaded (/lib/systemd/system/keepalived.service; enabled; vendor preset: enabled)",
+            "     Active: active (running) since Sat 2024-10-19 12:40:16 EDT; 1min 56s ago",
+            "   Main PID: 3584 (keepalived)",
+            "      Tasks: 2 (limit: 9244)",
+            "     Memory: 3.8M",
+            "        CPU: 995ms",
+            "     CGroup: /system.slice/keepalived.service",
+            "             ├─3584 /usr/sbin/keepalived --dont-fork",
+            "             └─3585 /usr/sbin/keepalived --dont-fork",
+            "",
+            "Oct 19 12:40:16 tpi-mn1 systemd[1]: Started Keepalive Daemon (LVS and VRRP).",
+            "Oct 19 12:40:16 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) succeeded",
+            "Oct 19 12:40:16 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 200 to 250",
+            "Oct 19 12:40:19 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Entering MASTER STATE",
+            "Oct 19 12:41:54 tpi-mn1 Keepalived_vrrp[3585]: Track script chk_haproxy is already running, expect idle - skipping run",
+            "Oct 19 12:42:02 tpi-mn1 Keepalived_vrrp[3585]: Track script chk_haproxy is already running, expect idle - skipping run",
+            "Oct 19 12:42:04 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) timed_out",
+            "Oct 19 12:42:04 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 250 to 200",
+            "Oct 19 12:42:10 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) succeeded",
+            "Oct 19 12:42:10 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 200 to 250"
+        ]
+    }
+}
+ok: [haproxy2] => {
+    "keepalived_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "keepalived"
+        ],
+        "delta": "0:00:00.041679",
+        "end": "2024-10-19 12:42:13.787899",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:13.746220",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● keepalived.service - LSB: Starts keepalived\n     Loaded: loaded (/etc/init.d/keepalived; generated)\n     Active: active (exited) since Sat 2024-10-19 12:34:42 EDT; 7min ago\n       Docs: man:systemd-sysv-generator(8)\n        CPU: 24ms\n\nOct 19 12:34:42 tpi-mn2 systemd[1]: Starting LSB: Starts keepalived...\nOct 19 12:34:42 tpi-mn2 systemd[1]: Started LSB: Starts keepalived.",
+        "stdout_lines": [
+            "● keepalived.service - LSB: Starts keepalived",
+            "     Loaded: loaded (/etc/init.d/keepalived; generated)",
+            "     Active: active (exited) since Sat 2024-10-19 12:34:42 EDT; 7min ago",
+            "       Docs: man:systemd-sysv-generator(8)",
+            "        CPU: 24ms",
+            "",
+            "Oct 19 12:34:42 tpi-mn2 systemd[1]: Starting LSB: Starts keepalived...",
+            "Oct 19 12:34:42 tpi-mn2 systemd[1]: Started LSB: Starts keepalived."
+        ]
+    }
+}
+ok: [haproxy3] => {
+    "keepalived_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "keepalived"
+        ],
+        "delta": "0:00:00.045133",
+        "end": "2024-10-19 12:42:13.814201",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:13.769068",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● keepalived.service - LSB: Starts keepalived\n     Loaded: loaded (/etc/init.d/keepalived; generated)\n     Active: active (exited) since Sat 2024-10-19 12:34:42 EDT; 7min ago\n       Docs: man:systemd-sysv-generator(8)\n        CPU: 25ms\n\nOct 19 12:34:42 tpi-mn3 systemd[1]: Starting LSB: Starts keepalived...\nOct 19 12:34:42 tpi-mn3 systemd[1]: Started LSB: Starts keepalived.",
+        "stdout_lines": [
+            "● keepalived.service - LSB: Starts keepalived",
+            "     Loaded: loaded (/etc/init.d/keepalived; generated)",
+            "     Active: active (exited) since Sat 2024-10-19 12:34:42 EDT; 7min ago",
+            "       Docs: man:systemd-sysv-generator(8)",
+            "        CPU: 25ms",
+            "",
+            "Oct 19 12:34:42 tpi-mn3 systemd[1]: Starting LSB: Starts keepalived...",
+            "Oct 19 12:34:42 tpi-mn3 systemd[1]: Started LSB: Starts keepalived."
+        ]
+    }
+}
+ok: [haproxy4] => {
+    "keepalived_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "keepalived"
+        ],
+        "delta": "0:00:00.044881",
+        "end": "2024-10-19 12:42:13.844641",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:13.799760",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● keepalived.service - LSB: Starts keepalived\n     Loaded: loaded (/etc/init.d/keepalived; generated)\n     Active: active (exited) since Sat 2024-10-19 12:34:42 EDT; 7min ago\n       Docs: man:systemd-sysv-generator(8)\n        CPU: 24ms\n\nOct 19 12:34:42 tpi-mn4 systemd[1]: Starting LSB: Starts keepalived...\nOct 19 12:34:42 tpi-mn4 systemd[1]: Started LSB: Starts keepalived.",
+        "stdout_lines": [
+            "● keepalived.service - LSB: Starts keepalived",
+            "     Loaded: loaded (/etc/init.d/keepalived; generated)",
+            "     Active: active (exited) since Sat 2024-10-19 12:34:42 EDT; 7min ago",
+            "       Docs: man:systemd-sysv-generator(8)",
+            "        CPU: 24ms",
+            "",
+            "Oct 19 12:34:42 tpi-mn4 systemd[1]: Starting LSB: Starts keepalived...",
+            "Oct 19 12:34:42 tpi-mn4 systemd[1]: Started LSB: Starts keepalived."
+        ]
+    }
+}
+ok: [tpi-mn1] => {
+    "keepalived_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "keepalived"
+        ],
+        "delta": "0:00:00.048921",
+        "end": "2024-10-19 12:42:14.682989",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:14.634068",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● keepalived.service - Keepalive Daemon (LVS and VRRP)\n     Loaded: loaded (/lib/systemd/system/keepalived.service; enabled; vendor preset: enabled)\n     Active: active (running) since Sat 2024-10-19 12:40:16 EDT; 1min 57s ago\n   Main PID: 3584 (keepalived)\n      Tasks: 2 (limit: 9244)\n     Memory: 3.8M\n        CPU: 995ms\n     CGroup: /system.slice/keepalived.service\n             ├─3584 /usr/sbin/keepalived --dont-fork\n             └─3585 /usr/sbin/keepalived --dont-fork\n\nOct 19 12:40:16 tpi-mn1 systemd[1]: Started Keepalive Daemon (LVS and VRRP).\nOct 19 12:40:16 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) succeeded\nOct 19 12:40:16 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 200 to 250\nOct 19 12:40:19 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Entering MASTER STATE\nOct 19 12:41:54 tpi-mn1 Keepalived_vrrp[3585]: Track script chk_haproxy is already running, expect idle - skipping run\nOct 19 12:42:02 tpi-mn1 Keepalived_vrrp[3585]: Track script chk_haproxy is already running, expect idle - skipping run\nOct 19 12:42:04 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) timed_out\nOct 19 12:42:04 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 250 to 200\nOct 19 12:42:10 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) succeeded\nOct 19 12:42:10 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 200 to 250",
+        "stdout_lines": [
+            "● keepalived.service - Keepalive Daemon (LVS and VRRP)",
+            "     Loaded: loaded (/lib/systemd/system/keepalived.service; enabled; vendor preset: enabled)",
+            "     Active: active (running) since Sat 2024-10-19 12:40:16 EDT; 1min 57s ago",
+            "   Main PID: 3584 (keepalived)",
+            "      Tasks: 2 (limit: 9244)",
+            "     Memory: 3.8M",
+            "        CPU: 995ms",
+            "     CGroup: /system.slice/keepalived.service",
+            "             ├─3584 /usr/sbin/keepalived --dont-fork",
+            "             └─3585 /usr/sbin/keepalived --dont-fork",
+            "",
+            "Oct 19 12:40:16 tpi-mn1 systemd[1]: Started Keepalive Daemon (LVS and VRRP).",
+            "Oct 19 12:40:16 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) succeeded",
+            "Oct 19 12:40:16 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 200 to 250",
+            "Oct 19 12:40:19 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Entering MASTER STATE",
+            "Oct 19 12:41:54 tpi-mn1 Keepalived_vrrp[3585]: Track script chk_haproxy is already running, expect idle - skipping run",
+            "Oct 19 12:42:02 tpi-mn1 Keepalived_vrrp[3585]: Track script chk_haproxy is already running, expect idle - skipping run",
+            "Oct 19 12:42:04 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) timed_out",
+            "Oct 19 12:42:04 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 250 to 200",
+            "Oct 19 12:42:10 tpi-mn1 Keepalived_vrrp[3585]: VRRP_Script(chk_haproxy) succeeded",
+            "Oct 19 12:42:10 tpi-mn1 Keepalived_vrrp[3585]: (LB_VIP) Changing effective priority from 200 to 250"
+        ]
+    }
+}
+ok: [tpi-mn2] => {
+    "keepalived_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "keepalived"
+        ],
+        "delta": "0:00:00.039880",
+        "end": "2024-10-19 12:42:14.572968",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:14.533088",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● keepalived.service - LSB: Starts keepalived\n     Loaded: loaded (/etc/init.d/keepalived; generated)\n     Active: active (exited) since Sat 2024-10-19 12:34:42 EDT; 7min ago\n       Docs: man:systemd-sysv-generator(8)\n        CPU: 24ms\n\nOct 19 12:34:42 tpi-mn2 systemd[1]: Starting LSB: Starts keepalived...\nOct 19 12:34:42 tpi-mn2 systemd[1]: Started LSB: Starts keepalived.",
+        "stdout_lines": [
+            "● keepalived.service - LSB: Starts keepalived",
+            "     Loaded: loaded (/etc/init.d/keepalived; generated)",
+            "     Active: active (exited) since Sat 2024-10-19 12:34:42 EDT; 7min ago",
+            "       Docs: man:systemd-sysv-generator(8)",
+            "        CPU: 24ms",
+            "",
+            "Oct 19 12:34:42 tpi-mn2 systemd[1]: Starting LSB: Starts keepalived...",
+            "Oct 19 12:34:42 tpi-mn2 systemd[1]: Started LSB: Starts keepalived."
+        ]
+    }
+}
+ok: [tpi-mn3] => {
+    "keepalived_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "keepalived"
+        ],
+        "delta": "0:00:00.041082",
+        "end": "2024-10-19 12:42:14.611640",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:14.570558",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● keepalived.service - LSB: Starts keepalived\n     Loaded: loaded (/etc/init.d/keepalived; generated)\n     Active: active (exited) since Sat 2024-10-19 12:34:42 EDT; 7min ago\n       Docs: man:systemd-sysv-generator(8)\n        CPU: 25ms\n\nOct 19 12:34:42 tpi-mn3 systemd[1]: Starting LSB: Starts keepalived...\nOct 19 12:34:42 tpi-mn3 systemd[1]: Started LSB: Starts keepalived.",
+        "stdout_lines": [
+            "● keepalived.service - LSB: Starts keepalived",
+            "     Loaded: loaded (/etc/init.d/keepalived; generated)",
+            "     Active: active (exited) since Sat 2024-10-19 12:34:42 EDT; 7min ago",
+            "       Docs: man:systemd-sysv-generator(8)",
+            "        CPU: 25ms",
+            "",
+            "Oct 19 12:34:42 tpi-mn3 systemd[1]: Starting LSB: Starts keepalived...",
+            "Oct 19 12:34:42 tpi-mn3 systemd[1]: Started LSB: Starts keepalived."
+        ]
+    }
+}
+ok: [tpi-mn4] => {
+    "keepalived_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "keepalived"
+        ],
+        "delta": "0:00:00.040663",
+        "end": "2024-10-19 12:42:14.658446",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:14.617783",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● keepalived.service - LSB: Starts keepalived\n     Loaded: loaded (/etc/init.d/keepalived; generated)\n     Active: active (exited) since Sat 2024-10-19 12:34:42 EDT; 7min ago\n       Docs: man:systemd-sysv-generator(8)\n        CPU: 24ms\n\nOct 19 12:34:42 tpi-mn4 systemd[1]: Starting LSB: Starts keepalived...\nOct 19 12:34:42 tpi-mn4 systemd[1]: Started LSB: Starts keepalived.",
+        "stdout_lines": [
+            "● keepalived.service - LSB: Starts keepalived",
+            "     Loaded: loaded (/etc/init.d/keepalived; generated)",
+            "     Active: active (exited) since Sat 2024-10-19 12:34:42 EDT; 7min ago",
+            "       Docs: man:systemd-sysv-generator(8)",
+            "        CPU: 24ms",
+            "",
+            "Oct 19 12:34:42 tpi-mn4 systemd[1]: Starting LSB: Starts keepalived...",
+            "Oct 19 12:34:42 tpi-mn4 systemd[1]: Started LSB: Starts keepalived."
+        ]
+    }
+}
+
+TASK [Unmask the HAProxy service] *****************************************************************************************************
+changed: [haproxy3]
+changed: [haproxy2]
+changed: [haproxy4]
+changed: [10.1.8.60]
+changed: [haproxy1]
+changed: [tpi-mn2]
+changed: [tpi-mn3]
+changed: [tpi-mn4]
+changed: [tpi-mn1]
+
+TASK [Enable HAProxy service to start at boot] ****************************************************************************************
+changed: [haproxy3]
+changed: [haproxy2]
+changed: [haproxy4]
+changed: [10.1.8.60]
+changed: [tpi-mn3]
+changed: [tpi-mn2]
+changed: [haproxy1]
+changed: [tpi-mn4]
+changed: [tpi-mn1]
+
+TASK [Start HAProxy service] **********************************************************************************************************
+changed: [haproxy2]
+changed: [10.1.8.60]
+changed: [haproxy1]
+changed: [haproxy3]
+changed: [haproxy4]
+changed: [tpi-mn1]
+changed: [tpi-mn2]
+changed: [tpi-mn3]
+changed: [tpi-mn4]
+
+TASK [Check status of HAProxy service] ************************************************************************************************
+changed: [haproxy2]
+changed: [10.1.8.60]
+changed: [haproxy1]
+changed: [haproxy3]
+changed: [haproxy4]
+changed: [tpi-mn1]
+changed: [tpi-mn2]
+changed: [tpi-mn3]
+changed: [tpi-mn4]
+
+TASK [Print HAProxy status] ***********************************************************************************************************
+ok: [10.1.8.60] => {
+    "haproxy_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "haproxy"
+        ],
+        "delta": "0:00:00.048575",
+        "end": "2024-10-19 12:42:37.077056",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:37.028481",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● haproxy.service - HAProxy Load Balancer\n     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)\n     Active: active (exited) since Sat 2024-10-19 12:35:00 EDT; 7min ago\n       Docs: man:haproxy(1)\n             file:/usr/share/doc/haproxy/configuration.txt.gz\n        CPU: 6ms\n\nOct 19 12:35:00 tpi-mn1 systemd[1]: Starting LSB: fast and reliable load balancing reverse proxy...\nOct 19 12:35:00 tpi-mn1 systemd[1]: Started LSB: fast and reliable load balancing reverse proxy.",
+        "stdout_lines": [
+            "● haproxy.service - HAProxy Load Balancer",
+            "     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)",
+            "     Active: active (exited) since Sat 2024-10-19 12:35:00 EDT; 7min ago",
+            "       Docs: man:haproxy(1)",
+            "             file:/usr/share/doc/haproxy/configuration.txt.gz",
+            "        CPU: 6ms",
+            "",
+            "Oct 19 12:35:00 tpi-mn1 systemd[1]: Starting LSB: fast and reliable load balancing reverse proxy...",
+            "Oct 19 12:35:00 tpi-mn1 systemd[1]: Started LSB: fast and reliable load balancing reverse proxy."
+        ]
+    }
+}
+ok: [haproxy1] => {
+    "haproxy_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "haproxy"
+        ],
+        "delta": "0:00:00.049965",
+        "end": "2024-10-19 12:42:37.112434",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:37.062469",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● haproxy.service - HAProxy Load Balancer\n     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)\n     Active: active (exited) since Sat 2024-10-19 12:35:00 EDT; 7min ago\n       Docs: man:haproxy(1)\n             file:/usr/share/doc/haproxy/configuration.txt.gz\n        CPU: 6ms\n\nOct 19 12:35:00 tpi-mn1 systemd[1]: Starting LSB: fast and reliable load balancing reverse proxy...\nOct 19 12:35:00 tpi-mn1 systemd[1]: Started LSB: fast and reliable load balancing reverse proxy.",
+        "stdout_lines": [
+            "● haproxy.service - HAProxy Load Balancer",
+            "     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)",
+            "     Active: active (exited) since Sat 2024-10-19 12:35:00 EDT; 7min ago",
+            "       Docs: man:haproxy(1)",
+            "             file:/usr/share/doc/haproxy/configuration.txt.gz",
+            "        CPU: 6ms",
+            "",
+            "Oct 19 12:35:00 tpi-mn1 systemd[1]: Starting LSB: fast and reliable load balancing reverse proxy...",
+            "Oct 19 12:35:00 tpi-mn1 systemd[1]: Started LSB: fast and reliable load balancing reverse proxy."
+        ]
+    }
+}
+ok: [haproxy2] => {
+    "haproxy_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "haproxy"
+        ],
+        "delta": "0:00:00.047737",
+        "end": "2024-10-19 12:42:37.102617",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:37.054880",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● haproxy.service - HAProxy Load Balancer\n     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)\n     Active: active (running) since Sat 2024-10-19 12:40:53 EDT; 1min 43s ago\n       Docs: man:haproxy(1)\n             file:/usr/share/doc/haproxy/configuration.txt.gz\n   Main PID: 3323 (haproxy)\n      Tasks: 5 (limit: 9244)\n     Memory: 69.8M\n        CPU: 447ms\n     CGroup: /system.slice/haproxy.service\n             ├─3323 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock\n             └─3325 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock\n\nOct 19 12:40:53 tpi-mn2 systemd[1]: Starting HAProxy Load Balancer...\nOct 19 12:40:53 tpi-mn2 haproxy[3323]: [NOTICE]   (3323) : New worker #1 (3325) forked\nOct 19 12:40:53 tpi-mn2 systemd[1]: Started HAProxy Load Balancer.",
+        "stdout_lines": [
+            "● haproxy.service - HAProxy Load Balancer",
+            "     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)",
+            "     Active: active (running) since Sat 2024-10-19 12:40:53 EDT; 1min 43s ago",
+            "       Docs: man:haproxy(1)",
+            "             file:/usr/share/doc/haproxy/configuration.txt.gz",
+            "   Main PID: 3323 (haproxy)",
+            "      Tasks: 5 (limit: 9244)",
+            "     Memory: 69.8M",
+            "        CPU: 447ms",
+            "     CGroup: /system.slice/haproxy.service",
+            "             ├─3323 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock",
+            "             └─3325 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock",
+            "",
+            "Oct 19 12:40:53 tpi-mn2 systemd[1]: Starting HAProxy Load Balancer...",
+            "Oct 19 12:40:53 tpi-mn2 haproxy[3323]: [NOTICE]   (3323) : New worker #1 (3325) forked",
+            "Oct 19 12:40:53 tpi-mn2 systemd[1]: Started HAProxy Load Balancer."
+        ]
+    }
+}
+ok: [haproxy3] => {
+    "haproxy_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "haproxy"
+        ],
+        "delta": "0:00:00.049230",
+        "end": "2024-10-19 12:42:37.129049",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:37.079819",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● haproxy.service - HAProxy Load Balancer\n     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)\n     Active: active (running) since Sat 2024-10-19 12:40:54 EDT; 1min 43s ago\n       Docs: man:haproxy(1)\n             file:/usr/share/doc/haproxy/configuration.txt.gz\n   Main PID: 3270 (haproxy)\n      Tasks: 5 (limit: 9244)\n     Memory: 69.8M\n        CPU: 450ms\n     CGroup: /system.slice/haproxy.service\n             ├─3270 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock\n             └─3272 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock\n\nOct 19 12:40:53 tpi-mn3 systemd[1]: Starting HAProxy Load Balancer...\nOct 19 12:40:54 tpi-mn3 haproxy[3270]: [NOTICE]   (3270) : New worker #1 (3272) forked\nOct 19 12:40:54 tpi-mn3 systemd[1]: Started HAProxy Load Balancer.",
+        "stdout_lines": [
+            "● haproxy.service - HAProxy Load Balancer",
+            "     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)",
+            "     Active: active (running) since Sat 2024-10-19 12:40:54 EDT; 1min 43s ago",
+            "       Docs: man:haproxy(1)",
+            "             file:/usr/share/doc/haproxy/configuration.txt.gz",
+            "   Main PID: 3270 (haproxy)",
+            "      Tasks: 5 (limit: 9244)",
+            "     Memory: 69.8M",
+            "        CPU: 450ms",
+            "     CGroup: /system.slice/haproxy.service",
+            "             ├─3270 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock",
+            "             └─3272 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock",
+            "",
+            "Oct 19 12:40:53 tpi-mn3 systemd[1]: Starting HAProxy Load Balancer...",
+            "Oct 19 12:40:54 tpi-mn3 haproxy[3270]: [NOTICE]   (3270) : New worker #1 (3272) forked",
+            "Oct 19 12:40:54 tpi-mn3 systemd[1]: Started HAProxy Load Balancer."
+        ]
+    }
+}
+ok: [haproxy4] => {
+    "haproxy_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "haproxy"
+        ],
+        "delta": "0:00:00.047637",
+        "end": "2024-10-19 12:42:37.163174",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:37.115537",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● haproxy.service - HAProxy Load Balancer\n     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)\n     Active: active (running) since Sat 2024-10-19 12:40:53 EDT; 1min 43s ago\n       Docs: man:haproxy(1)\n             file:/usr/share/doc/haproxy/configuration.txt.gz\n   Main PID: 3610 (haproxy)\n      Tasks: 5 (limit: 9244)\n     Memory: 69.8M\n        CPU: 449ms\n     CGroup: /system.slice/haproxy.service\n             ├─3610 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock\n             └─3612 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock\n\nOct 19 12:40:53 tpi-mn4 systemd[1]: Starting HAProxy Load Balancer...\nOct 19 12:40:53 tpi-mn4 haproxy[3610]: [NOTICE]   (3610) : New worker #1 (3612) forked\nOct 19 12:40:53 tpi-mn4 systemd[1]: Started HAProxy Load Balancer.",
+        "stdout_lines": [
+            "● haproxy.service - HAProxy Load Balancer",
+            "     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)",
+            "     Active: active (running) since Sat 2024-10-19 12:40:53 EDT; 1min 43s ago",
+            "       Docs: man:haproxy(1)",
+            "             file:/usr/share/doc/haproxy/configuration.txt.gz",
+            "   Main PID: 3610 (haproxy)",
+            "      Tasks: 5 (limit: 9244)",
+            "     Memory: 69.8M",
+            "        CPU: 449ms",
+            "     CGroup: /system.slice/haproxy.service",
+            "             ├─3610 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock",
+            "             └─3612 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock",
+            "",
+            "Oct 19 12:40:53 tpi-mn4 systemd[1]: Starting HAProxy Load Balancer...",
+            "Oct 19 12:40:53 tpi-mn4 haproxy[3610]: [NOTICE]   (3610) : New worker #1 (3612) forked",
+            "Oct 19 12:40:53 tpi-mn4 systemd[1]: Started HAProxy Load Balancer."
+        ]
+    }
+}
+ok: [tpi-mn1] => {
+    "haproxy_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "haproxy"
+        ],
+        "delta": "0:00:00.043961",
+        "end": "2024-10-19 12:42:37.854844",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:37.810883",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● haproxy.service - HAProxy Load Balancer\n     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)\n     Active: active (exited) since Sat 2024-10-19 12:35:00 EDT; 7min ago\n       Docs: man:haproxy(1)\n             file:/usr/share/doc/haproxy/configuration.txt.gz\n        CPU: 6ms\n\nOct 19 12:35:00 tpi-mn1 systemd[1]: Starting LSB: fast and reliable load balancing reverse proxy...\nOct 19 12:35:00 tpi-mn1 systemd[1]: Started LSB: fast and reliable load balancing reverse proxy.",
+        "stdout_lines": [
+            "● haproxy.service - HAProxy Load Balancer",
+            "     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)",
+            "     Active: active (exited) since Sat 2024-10-19 12:35:00 EDT; 7min ago",
+            "       Docs: man:haproxy(1)",
+            "             file:/usr/share/doc/haproxy/configuration.txt.gz",
+            "        CPU: 6ms",
+            "",
+            "Oct 19 12:35:00 tpi-mn1 systemd[1]: Starting LSB: fast and reliable load balancing reverse proxy...",
+            "Oct 19 12:35:00 tpi-mn1 systemd[1]: Started LSB: fast and reliable load balancing reverse proxy."
+        ]
+    }
+}
+ok: [tpi-mn2] => {
+    "haproxy_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "haproxy"
+        ],
+        "delta": "0:00:00.041265",
+        "end": "2024-10-19 12:42:37.906341",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:37.865076",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● haproxy.service - HAProxy Load Balancer\n     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)\n     Active: active (running) since Sat 2024-10-19 12:40:53 EDT; 1min 43s ago\n       Docs: man:haproxy(1)\n             file:/usr/share/doc/haproxy/configuration.txt.gz\n   Main PID: 3323 (haproxy)\n      Tasks: 5 (limit: 9244)\n     Memory: 69.8M\n        CPU: 447ms\n     CGroup: /system.slice/haproxy.service\n             ├─3323 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock\n             └─3325 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock\n\nOct 19 12:40:53 tpi-mn2 systemd[1]: Starting HAProxy Load Balancer...\nOct 19 12:40:53 tpi-mn2 haproxy[3323]: [NOTICE]   (3323) : New worker #1 (3325) forked\nOct 19 12:40:53 tpi-mn2 systemd[1]: Started HAProxy Load Balancer.",
+        "stdout_lines": [
+            "● haproxy.service - HAProxy Load Balancer",
+            "     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)",
+            "     Active: active (running) since Sat 2024-10-19 12:40:53 EDT; 1min 43s ago",
+            "       Docs: man:haproxy(1)",
+            "             file:/usr/share/doc/haproxy/configuration.txt.gz",
+            "   Main PID: 3323 (haproxy)",
+            "      Tasks: 5 (limit: 9244)",
+            "     Memory: 69.8M",
+            "        CPU: 447ms",
+            "     CGroup: /system.slice/haproxy.service",
+            "             ├─3323 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock",
+            "             └─3325 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock",
+            "",
+            "Oct 19 12:40:53 tpi-mn2 systemd[1]: Starting HAProxy Load Balancer...",
+            "Oct 19 12:40:53 tpi-mn2 haproxy[3323]: [NOTICE]   (3323) : New worker #1 (3325) forked",
+            "Oct 19 12:40:53 tpi-mn2 systemd[1]: Started HAProxy Load Balancer."
+        ]
+    }
+}
+ok: [tpi-mn3] => {
+    "haproxy_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "haproxy"
+        ],
+        "delta": "0:00:00.045007",
+        "end": "2024-10-19 12:42:37.940036",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:37.895029",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● haproxy.service - HAProxy Load Balancer\n     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)\n     Active: active (running) since Sat 2024-10-19 12:40:54 EDT; 1min 43s ago\n       Docs: man:haproxy(1)\n             file:/usr/share/doc/haproxy/configuration.txt.gz\n   Main PID: 3270 (haproxy)\n      Tasks: 5 (limit: 9244)\n     Memory: 69.8M\n        CPU: 450ms\n     CGroup: /system.slice/haproxy.service\n             ├─3270 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock\n             └─3272 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock\n\nOct 19 12:40:53 tpi-mn3 systemd[1]: Starting HAProxy Load Balancer...\nOct 19 12:40:54 tpi-mn3 haproxy[3270]: [NOTICE]   (3270) : New worker #1 (3272) forked\nOct 19 12:40:54 tpi-mn3 systemd[1]: Started HAProxy Load Balancer.",
+        "stdout_lines": [
+            "● haproxy.service - HAProxy Load Balancer",
+            "     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)",
+            "     Active: active (running) since Sat 2024-10-19 12:40:54 EDT; 1min 43s ago",
+            "       Docs: man:haproxy(1)",
+            "             file:/usr/share/doc/haproxy/configuration.txt.gz",
+            "   Main PID: 3270 (haproxy)",
+            "      Tasks: 5 (limit: 9244)",
+            "     Memory: 69.8M",
+            "        CPU: 450ms",
+            "     CGroup: /system.slice/haproxy.service",
+            "             ├─3270 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock",
+            "             └─3272 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock",
+            "",
+            "Oct 19 12:40:53 tpi-mn3 systemd[1]: Starting HAProxy Load Balancer...",
+            "Oct 19 12:40:54 tpi-mn3 haproxy[3270]: [NOTICE]   (3270) : New worker #1 (3272) forked",
+            "Oct 19 12:40:54 tpi-mn3 systemd[1]: Started HAProxy Load Balancer."
+        ]
+    }
+}
+ok: [tpi-mn4] => {
+    "haproxy_status": {
+        "changed": true,
+        "cmd": [
+            "systemctl",
+            "status",
+            "haproxy"
+        ],
+        "delta": "0:00:00.045169",
+        "end": "2024-10-19 12:42:37.974261",
+        "failed": false,
+        "msg": "",
+        "rc": 0,
+        "start": "2024-10-19 12:42:37.929092",
+        "stderr": "",
+        "stderr_lines": [],
+        "stdout": "● haproxy.service - HAProxy Load Balancer\n     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)\n     Active: active (running) since Sat 2024-10-19 12:40:53 EDT; 1min 44s ago\n       Docs: man:haproxy(1)\n             file:/usr/share/doc/haproxy/configuration.txt.gz\n   Main PID: 3610 (haproxy)\n      Tasks: 5 (limit: 9244)\n     Memory: 69.8M\n        CPU: 449ms\n     CGroup: /system.slice/haproxy.service\n             ├─3610 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock\n             └─3612 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock\n\nOct 19 12:40:53 tpi-mn4 systemd[1]: Starting HAProxy Load Balancer...\nOct 19 12:40:53 tpi-mn4 haproxy[3610]: [NOTICE]   (3610) : New worker #1 (3612) forked\nOct 19 12:40:53 tpi-mn4 systemd[1]: Started HAProxy Load Balancer.",
+        "stdout_lines": [
+            "● haproxy.service - HAProxy Load Balancer",
+            "     Loaded: loaded (/lib/systemd/system/haproxy.service; enabled; vendor preset: enabled)",
+            "     Active: active (running) since Sat 2024-10-19 12:40:53 EDT; 1min 44s ago",
+            "       Docs: man:haproxy(1)",
+            "             file:/usr/share/doc/haproxy/configuration.txt.gz",
+            "   Main PID: 3610 (haproxy)",
+            "      Tasks: 5 (limit: 9244)",
+            "     Memory: 69.8M",
+            "        CPU: 449ms",
+            "     CGroup: /system.slice/haproxy.service",
+            "             ├─3610 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock",
+            "             └─3612 /usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid -S /run/haproxy-master.sock",
+            "",
+            "Oct 19 12:40:53 tpi-mn4 systemd[1]: Starting HAProxy Load Balancer...",
+            "Oct 19 12:40:53 tpi-mn4 haproxy[3610]: [NOTICE]   (3610) : New worker #1 (3612) forked",
+            "Oct 19 12:40:53 tpi-mn4 systemd[1]: Started HAProxy Load Balancer."
+        ]
+    }
+}
+
+PLAY RECAP ****************************************************************************************************************************
+10.1.8.60                  : ok=11   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+haproxy1                   : ok=11   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+haproxy2                   : ok=11   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+haproxy3                   : ok=11   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+haproxy4                   : ok=11   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+tpi-mn1                    : ok=11   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+tpi-mn2                    : ok=11   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+tpi-mn3                    : ok=11   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+tpi-mn4                    : ok=11   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+terry6200@cm4:~/Kubernetes/Deployment/Ansible/TuringPi $
+

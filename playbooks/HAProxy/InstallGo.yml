@@ -1,0 +1,15 @@
+---
+- name: Run existing InstallGo.sh script on remote host
+  hosts: masters
+  become: yes
+  tasks:
+    - name: Ensure InstallGo.sh has executable permissions
+      file:
+        path: /home/ubuntu/0_HAProxy/go_installer.sh
+        mode: '0755'
+
+    - name: Execute InstallGo.sh on remote host
+      shell: "sh /home/ubuntu/0_HAProxy/go_installer.sh"
+      args:
+        executable: /bin/bash
+

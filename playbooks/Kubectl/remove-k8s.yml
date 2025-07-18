@@ -1,0 +1,10 @@
+---
+- name: Run existing remove-k8s.sh script on remote host
+  hosts: masters
+  become: yes
+  tasks:
+    - name: Execute remove-k8s.sh on remote host
+      shell: "sh /home/ubuntu/3_Kubectl/remove-k8s.sh"
+      args:
+        executable: /bin/bash
+

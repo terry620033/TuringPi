@@ -1,0 +1,12 @@
+---
+- name: Execute shell script on remote server to purge Keepalived & HAProxy
+  hosts: masters
+  become: true
+  user: root
+  tasks:
+    - name: Run shell script on remote server to purge Keepalived & HAProxy 
+      shell: "sh -c /home/ubuntu/0_HAProxy/purgeHA.sh"
+      async: 1
+      poll: 0
+      ignore_errors: true
+

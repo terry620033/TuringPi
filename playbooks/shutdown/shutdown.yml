@@ -1,0 +1,9 @@
+- hosts: masters 
+  become: yes
+  tasks:
+    - name: Shutdown the servers
+      command: sudo shutdown -h now
+      async: 1
+      poll: 0
+      ignore_errors: true
+

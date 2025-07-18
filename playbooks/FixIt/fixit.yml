@@ -1,0 +1,26 @@
+---
+- name: Remove lock files and configure dpkg
+  hosts: masters  # Change this to your specific host group if needed
+  become: true  # Run commands as root
+  tasks:
+    - name: Remove dpkg lock file
+      command: rm -f /var/lib/dpkg/lock
+      ignore_errors: yes  # Ignore errors if the file does not exist
+
+    - name: Remove dpkg lock-frontend file
+      command: rm -f /var/lib/dpkg/lock-frontend
+      ignore_errors: yes  # Ignore errors if the file does not exist
+
+    - name: Remove apt archive lock file
+      command: rm -f /var/cache/apt/archives/lock
+      ignore_errors: yes  # Ignore errors if the file does not exist
+
+    - name: Reconfigure dpkg
+      command: dpkg --configure -a
+      register: dpkg_configure_result
+
+    - name: Check dpkg configuration result
+      debug:
+        msg: "dpkg configuration completed with result: {{ dpkg_configure_result.stdout }}"
+      when: dpkg_configure_result.stdout != ""
+

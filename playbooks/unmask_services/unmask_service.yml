@@ -1,0 +1,41 @@
+---
+- name: Unmask, enable, and start keepalived and HAProxy services
+  hosts: masters  # or specify specific hosts or groups
+  become: yes     # run with sudo privileges
+  tasks:
+    - name: Unmask the keepalived service
+      command: systemctl unmask keepalived
+
+    - name: Enable keepalived service to start at boot
+      command: systemctl enable keepalived
+
+    - name: Start keepalived service
+      command: systemctl start keepalived
+
+    - name: Check status of keepalived service
+      command: systemctl status keepalived
+      register: keepalived_status
+      ignore_errors: true
+
+    - name: Print keepalived status
+      debug:
+        var: keepalived_status
+
+    - name: Unmask the HAProxy service
+      command: systemctl unmask haproxy
+
+    - name: Enable HAProxy service to start at boot
+      command: systemctl enable haproxy
+
+    - name: Start HAProxy service
+      command: systemctl start haproxy
+
+    - name: Check status of HAProxy service
+      command: systemctl status haproxy
+      register: haproxy_status
+      ignore_errors: true
+
+    - name: Print HAProxy status
+      debug:
+        var: haproxy_status
+

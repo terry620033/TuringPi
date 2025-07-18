@@ -1,0 +1,6 @@
+---
+- name: Execute shell script on remote server
+  hosts: masters
+  tasks:
+    - name: Run shell script on remote server
+      shell: sh /home/ubuntu/0_HAProxy/go_installer.sh

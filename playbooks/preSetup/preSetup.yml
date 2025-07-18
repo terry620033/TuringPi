@@ -1,0 +1,14 @@
+---
+- name: Run existing preSetup.sh script on remote host
+  hosts: masters 
+  become: yes
+  tasks:
+    - name: Ensure preSetup.sh has executable permissions
+      file:
+        path: /home/ubuntu/preSetup.sh
+        mode: '0755'
+
+    - name: Execute preSetup.sh on remote host
+      shell: "sh /home/ubuntu/preSetup.sh"
+      args:
+        executable: /bin/bash

@@ -1,0 +1,34 @@
+---
+- name: Configure Netplan on multiple nodes
+  hosts: masters
+  become: yes
+  vars:
+    gateway: "192.168.1.1"  # Default gateway for all nodes
+  tasks:
+    - name: Ensure netplan configuration directory exists
+      file:
+        path: /etc/netplan
+        state: directory
+
+    - name: Deploy Netplan configuration
+      copy:
+        dest: /etc/netplan/01-netplan-config.yaml
+        content: |
+          network:
+            version: 2
+            renderer: networkd
+            ethernets:
+              eth0:
+                addresses:
+                  - "{{ ip }}/24"
+                gateway4: "{{ gateway }}"
+                nameservers:
+                  addresses:
+                    - "8.8.8.8"
+                    - "8.8.4.4"
+      delegate_to: "{{ inventory_hostname }}"
+      when: ip is defined
+
+    - name: Apply Netplan configuration
+      command: netplan apply
+

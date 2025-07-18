@@ -1,0 +1,15 @@
+---
+- name: Run existing editCrontab.sh script on remote host
+  hosts: masters
+  become: yes
+  tasks:
+    - name: Ensure InstallHA.sh has executable permissions
+      file:
+        path: /home/ubuntu/0_HAProxy/editCrontab.sh
+        mode: '0755'
+
+    - name: Execute InstallHA.sh on remote host
+      shell: "sh /home/ubuntu/0_HAProxy/editCrontab.sh"
+      args:
+        executable: /bin/bash
+
