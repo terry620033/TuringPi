@@ -1,1 +1,1 @@
-# Kubernetes + CRI-O  ᯓ🏃🏻‍♀️‍➡️TuringPi + CM4 
+# Deploy Kubernetes + CRI-O  ᯓ🏃🏻‍♀️‍➡️TuringPi + CM4 via Ansible
