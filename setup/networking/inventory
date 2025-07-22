@@ -1,9 +1,0 @@
-[turingpi]
-tpi-mn1 ansible_host_ip=10.1.8.61 
-tpi-mn2 ansible_host_ip=10.1.8.62
-tpi-mn3 ansible_host_ip=10.1.8.63
-tpi-mn4 ansible_host_ip=10.1.8.64
-
-
-[turingpi:vars]
-ansible_ssh_user=ubuntu
