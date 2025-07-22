@@ -2,7 +2,7 @@
 
 # Variables
 GITHUB_USERNAME="terry620033"  # Replace with your actual GitHub username
-REPO_NAME="K8S"
+REPO_NAME="TuringPi"
 EMAIL="terry620033@gmail.com"
 WORK_DIR="$HOME/Kubernetes/Deployment/Ansible/TuringPi"
 REMOTE_SSH_URL="git@github.com:$GITHUB_USERNAME/$REPO_NAME.git"
